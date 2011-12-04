@@ -1,0 +1,82 @@
+<html>
+<head>
+    <title>Totem9.net :: Tetris Home Page!</title>
+    <link rel='stylesheet' type='text/css' href='tetris.css' />
+    
+    <!-- gamelib modules -->
+    <script type='text/javascript' src='gamelib/keys.js'></script>
+    <script type='text/javascript' src='gamelib/graphics.js'></script>
+    <script type='text/javascript' src='gamelib/environment.js'></script>
+    <script type='text/javascript' src='gamelib/screen.js'></script>
+    
+    <!-- tetris modules -->
+    <script type='text/javascript' src='tetris/display.js'></script>
+    <script type='text/javascript' src='tetris/loadtiles.js'></script>
+    <script type='text/javascript' src='tetris/block.js'></script>
+    <script type='text/javascript' src='tetris/loadmap.js'></script>
+    <script type='text/javascript' src='tetris/moveandcollide.js'></script>
+    <script type='text/javascript' src='tetris/endgame.js'></script>
+    <script type='text/javascript' src='tetris/nextblock.js'></script>
+    <script type='text/javascript' src='tetris/score.js'></script>
+</head>
+
+<body onload='begin()'>
+
+<div class='container'>
+
+<div id='gamediv' class='boxes'>
+    <canvas id='screen' width='200px' height='400px'>
+        Canvas not supported in your browser.
+    </canvas>
+</div>
+
+<div id='bufferdiv' class='boxes'>
+    <canvas id='buffer' width='100px' height='200px'>
+    </canvas>
+</div>
+
+<div id='nextpiecediv' class='boxes'>
+    <canvas id='nextpiece' width='100px' height='100px'>
+    </canvas>
+</div>
+
+<div id='scorecontainer' class='boxes'>
+    <p>Level: </p><div id='level' class='scoreinfo'></div>
+    <p>Lines: </p><div id='lines' class='scoreinfo'></div>
+    <p>Score: </p><div id='score' class='scoreinfo'></div>
+</div>
+
+</div>
+
+</body>
+</html>
+
+<!-- game entry -->
+<script type='text/javascript'>
+
+function begin() {
+    setUpEnvironment('screen', 'buffer', 2);
+    
+    document.onkeyup = keyup;
+    document.onkeydown = keydown;
+    
+    loadtiles();  //when loadtiles is complete, it runs a new game.
+}
+
+function newGame() {
+    
+    env.map = loadMap();
+    env.block = new Block();
+    env.nextBlock = new Block();
+    
+    env.gameInPlay = true;
+    
+    display();
+    showNextBlock();
+    env.lines = 0;
+    scoreAdd(0);
+    fall();
+    
+}
+
+</script>
