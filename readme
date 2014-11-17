@@ -3,3 +3,7 @@ a project to create tetris in javascript in one day.
 This project was completed sept 2010, a after finishing my msc computer science exams, but before beginning at grapple mobile. The project is left as-is, to show what can be accomplished on a lazy weekend.
 
 It is also interesting to see the state of javascript development in 2010, before the firefox 5 canvas speed increases and html5 games really taking off (if they ever do).
+
+Play here:
+http://rawgit.com/douglett/tetris_js/master/tetris.html
+
